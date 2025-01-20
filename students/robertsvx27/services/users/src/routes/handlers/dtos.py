@@ -38,3 +38,10 @@ class UpdateUserRequest(BaseModel):
 class UpdateUserResponse(UserResponse):
     data: List[UserResponse]
 
+
+class GetUserRequest(BaseModel):
+    id: int
+
+
+class GetUserResponse(UserResponse):
+    extra_info: Optional[str] = None
