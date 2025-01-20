@@ -1,6 +1,8 @@
 from fastapi import APIRouter
+
+from .handlers.delete_user import delete_user
 from .handlers.dtos import CreateUserRequest, UserResponse, ListUserResponse, UpdateUserRequest, UpdateUserResponse, \
-    GetUserResponse, GetUserRequest
+    GetUserResponse, GetUserRequest, DeleteUserResponse, DeleteUserRequest
 from .handlers.create_user import create_user
 from .handlers.get_user import get_user
 from .handlers.list_users import list_users
@@ -35,6 +37,7 @@ def list_users_route() -> ListUserResponse:
     return list_users()
 
 
-@router.delete("/users/{user_id}")
+@router.delete("/users/{user_id}", response_model=DeleteUserResponse)
 def delete_user_route(user_id: int):
-    pass
+    request = DeleteUserRequest(id=user_id)
+    return delete_user(request)

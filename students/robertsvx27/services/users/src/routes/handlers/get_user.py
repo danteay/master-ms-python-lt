@@ -13,6 +13,6 @@ def get_user(request: GetUserRequest) -> GetUserResponse:
     user = FAKE_USERS_DB.get(request.id)
 
     if not user:
-        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+        raise HTTPException(status_code=404, detail="User not found...")
 
     return GetUserResponse(**user)

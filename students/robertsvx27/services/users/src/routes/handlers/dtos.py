@@ -45,3 +45,12 @@ class GetUserRequest(BaseModel):
 
 class GetUserResponse(UserResponse):
     extra_info: Optional[str] = None
+
+
+class DeleteUserRequest(BaseModel):
+    id: int
+
+
+class DeleteUserResponse(BaseModel):
+    success: bool
+    message: Optional[str] = "User deleted"
