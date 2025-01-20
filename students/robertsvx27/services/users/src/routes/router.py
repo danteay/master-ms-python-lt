@@ -1,7 +1,8 @@
 from fastapi import APIRouter
-from .handlers.dtos import CreateUserRequest, UserResponse, ListUserResponse
+from .handlers.dtos import CreateUserRequest, UserResponse, ListUserResponse, UpdateUserRequest, UpdateUserResponse
 from .handlers.create_user import create_user
 from .handlers.list_users import list_users
+from .handlers.update_user import update_user
 
 
 router = APIRouter()
@@ -18,12 +19,8 @@ def create_user_route(request: CreateUserRequest) -> UserResponse:
 
 
 @router.put("/{id}")
-def update_user_route(id: int):
-    # usuario actualizado
-    return {
-        "id": id,
-        "message": "usuario actualizado"
-    }
+def update_user_route(request: UpdateUserRequest) -> UpdateUserResponse:
+    return update_user(request)
 
 
 @router.get("/{id}")
